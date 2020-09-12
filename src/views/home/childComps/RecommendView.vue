@@ -30,7 +30,7 @@ export default {
     text-align: center;
     font-size: 12px;
     padding: 15px 0px 20px;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
   }
   .recommend-item{
     flex: 1;

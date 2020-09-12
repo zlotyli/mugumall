@@ -11,7 +11,7 @@ export function request(config){
   // 2.1拦截请求（包括请求成功和请求失败的拦截）
   // 该use方法中为两个函数作为参数，第一个函数为请求成功时的回调，参数为config。第二个函数为请求s失败时的回调，参数为error
   instance.interceptors.request.use(config=>{
-    console.log(config);
+    // console.log(config);
 
     // 需要return该请求的信息，否则请求的信息被拦截后，内部发送请求但无法获取请求的内容
     return config;
@@ -22,7 +22,7 @@ export function request(config){
   // 2.2拦截响应（包括响应成功和响应失败的拦截）
   // 此处的res为服务器响应的结果
   instance.interceptors.response.use(res=>{
-    console.log(res);
+    // console.log(res);
     // 拦截响应后需要返回响应，不然在其他地方获取不到响应的结果，该结果为res.data;
     return res.data;
   },err=>{
