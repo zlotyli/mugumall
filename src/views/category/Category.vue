@@ -107,10 +107,10 @@
 
 <script>
 // 引入better-scroll此处为新版
-import Bscroll from '@better-scroll/core'
-import Pullup from '@better-scroll/pull-up'
+import Bscroll from 'better-scroll'
+// import Pullup from '@better-scroll/pull-up'
 // 安装下拉加载插件
-Bscroll.use(Pullup)
+// Bscroll.use(Pullup)
 
 export default {
   name:'Category',
@@ -133,12 +133,12 @@ export default {
       // console.log(position);
     })
     this.scroll.on('pullingUp', ()=>{
-      console.log('上拉加载更多')
+      // console.log('上拉加载更多')
     })
   }
 }
 </script>
-<style>
+<style scoped>
 .wrapper{
   height: 150px;
   overflow: hidden;

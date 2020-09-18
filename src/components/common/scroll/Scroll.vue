@@ -7,11 +7,11 @@
 </template>
 
 <script>
-// 引入better-scroll此处为新版
-import BScroll from '@better-scroll/core'
-import Pullup from '@better-scroll/pull-up'
-// 安装下拉加载插件
-BScroll.use(Pullup);
+// 引入better-scroll
+import BScroll from 'better-scroll'
+// import Pullup from '@better-scroll/pull-up'
+// // 安装下拉加载插件
+// BScroll.use(Pullup);
 
 export default {
   name: 'Scroll',
@@ -40,18 +40,22 @@ export default {
       pullUpLoad:this.pullUpLoad
     })
     // 2.监听滚动的位置
-    this.scroll.on('scroll',(position)=>{
-      // console.log(position);
-      // 通过子组件滚动时发送事件给父组件，告诉父组件我滚动了，通过父组件来获取子组件滚动的值来进行相关操作
-      this.$emit('scroll', position);
-    })
+    if(this.probeType === 2 || this.probeType === 3){
+        this.scroll.on('scroll',(position)=>{
+        // console.log(position);
+        // 通过子组件滚动时发送事件给父组件，告诉父组件我滚动了，通过父组件来获取子组件滚动的值来进行相关操作
+          this.$emit('scroll', position);
+        })
+    }
 
     // 3.监听上拉加载更多事件
-    this.scroll.on('pullingUp',()=>{
-      // console.log('上拉加载更多');
-      this.$emit('pullingUp');
-      // this.scroll.finishPullUp();
-    })
+    if(this.pullUpLoad){
+      this.scroll.on('pullingUp',()=>{
+        // console.log('上拉加载更多');
+        this.$emit('pullingUp');
+        // this.scroll.finishPullUp();
+      })
+    }
     
     // 可以通过this.scroll.scrollTo(0,0,500)返回顶部
     // this.scroll.scrollTo(0,0) ;
@@ -59,10 +63,18 @@ export default {
   },
   methods:{
     scrollTo(x,y,time=500){
-      this.scroll.scrollTo(x,y,time);
+      this.scroll && this.scroll.scrollTo(x,y,time);
     },
     finishPullUp(){
-      this.scroll.finishPullUp();
+      this.scroll && this.scroll.finishPullUp();
+    },
+    refresh(){
+      // console.log('-----');
+      this.scroll && this.scroll.refresh();
+      // this.scroll.refresh();
+    },
+    getScrollY(){
+      return this.scroll ? this.scroll.y:0;
     }
   }
 }
