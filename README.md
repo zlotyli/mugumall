@@ -1,5 +1,6 @@
 # supermall
-
+## 目前已经实现首页详情页以及购物车页功能
+## 注意该项目是coderwhy老师提供的接口，目前该接口已经更改，最新接口信息请添加老师微信coderwhy
 ## Project setup
 ```
 npm install
